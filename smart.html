@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Lighting Systems | Kegastic Royel Limited</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-base:#0a0a0a; --bg-card:#1a1a1a; --gold-primary:#c9a84c; --gold-deep:#8b6914; --text-main:#fff8e7; --text-muted:#a0a0a0; --font-display:'Cormorant Garamond',serif; --font-body:'DM Sans',sans-serif; --transition:all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:var(--font-body); background:var(--bg-base); color:var(--text-main); line-height:1.6; overflow-x:hidden; }
+        h1,h2,h3 { font-family:var(--font-display); font-weight:500; line-height:1.2; }
+        a { text-decoration:none; color:inherit; transition:var(--transition); }
+        nav { position:fixed; top:0; width:100%; background:rgba(10,10,10,0.95); backdrop-filter:blur(10px); border-bottom:1px solid rgba(201,168,76,0.2); z-index:1000; padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; }
+        .nav-logo { font-family:var(--font-display); font-size:1.4rem; color:var(--gold-primary); display:flex; align-items:center; gap:0.5rem; }
+        .nav-links { display:flex; gap:2rem; align-items:center; }
+        .nav-links a { color:var(--text-muted); font-size:0.9rem; }
+        .nav-links a:hover { color:var(--gold-primary); }
+        .btn-gold { background:var(--gold-primary); color:#0a0a0a; padding:0.6rem 1.5rem; border-radius:2px; font-weight:500; font-size:0.85rem; }
+        .hamburger { display:none; background:none; border:none; cursor:pointer; }
+        .hamburger svg { width:24px; height:24px; stroke:var(--gold-primary); }
+        .page-hero { min-height:50vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:8rem 2rem 4rem; background:radial-gradient(ellipse at center top,rgba(201,168,76,0.15) 0%,transparent 70%); border-bottom:1px solid rgba(201,168,76,0.1); }
+        .page-hero h1 { font-size:clamp(2.5rem,6vw,4.5rem); margin-bottom:1rem; }
+        .page-hero p { color:var(--text-muted); max-width:600px; margin:0 auto 2rem; font-size:1.1rem; }
+        .breadcrumb { display:flex; align-items:center; justify-content:center; gap:0.5rem; font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem; }
+        .breadcrumb a { color:var(--gold-primary); }
+        .features-strip { background:var(--bg-card); border-top:1px solid rgba(201,168,76,0.1); border-bottom:1px solid rgba(201,168,76,0.1); padding:3rem 2rem; }
+        .features-strip .inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; text-align:center; }
+        .feature-item .icon { font-size:2rem; margin-bottom:0.5rem; }
+        .feature-item h4 { font-family:var(--font-display); font-size:1.1rem; color:var(--gold-primary); margin-bottom:0.3rem; }
+        .feature-item p { color:var(--text-muted); font-size:0.85rem; }
+        .products-section { padding:5rem 2rem; max-width:1280px; margin:0 auto; }
+        .products-section h2 { font-size:2rem; text-align:center; margin-bottom:0.5rem; }
+        .products-section .subtitle { text-align:center; color:var(--text-muted); margin-bottom:3rem; }
+        .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+        .card { background:var(--bg-card); border:1px solid rgba(201,168,76,0.1); border-radius:4px; overflow:hidden; transition:var(--transition); }
+        .card:hover { border-color:var(--gold-primary); transform:translateY(-5px); box-shadow:0 20px 40px rgba(201,168,76,0.1); }
+        .card img { width:100%; height:260px; object-fit:cover; display:block; transition:var(--transition); }
+        .card:hover img { transform:scale(1.05); }
+        .card-img-wrap { overflow:hidden; }
+        .card-body { padding:1.5rem; }
+        .card-body h3 { font-size:1.3rem; margin-bottom:0.5rem; }
+        .card-body p { color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem; }
+        .card-tag { display:inline-block; background:rgba(201,168,76,0.1); color:var(--gold-primary); font-size:0.75rem; padding:0.2rem 0.7rem; border-radius:20px; margin-bottom:0.8rem; }
+        .enquire-btn { display:inline-flex; align-items:center; gap:0.4rem; color:var(--gold-primary); font-size:0.85rem; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; border:1px solid rgba(201,168,76,0.3); padding:0.6rem 1.2rem; border-radius:2px; transition:var(--transition); }
+        .enquire-btn:hover { background:var(--gold-primary); color:#0a0a0a; }
+        .cta-section { background:radial-gradient(ellipse at center,rgba(201,168,76,0.1) 0%,transparent 70%); border-top:1px solid rgba(201,168,76,0.15); border-bottom:1px solid rgba(201,168,76,0.15); padding:5rem 2rem; text-align:center; }
+        .cta-section h2 { font-size:2.5rem; margin-bottom:1rem; }
+        .cta-section p { color:var(--text-muted); margin-bottom:2rem; max-width:500px; margin-left:auto; margin-right:auto; }
+        .cta-btn { display:inline-block; background:var(--gold-primary); color:#0a0a0a; padding:1rem 2.5rem; font-weight:600; font-size:1rem; border-radius:2px; transition:var(--transition); }
+        .cta-btn:hover { background:var(--gold-deep); color:var(--text-main); transform:translateY(-2px); }
+        footer { background:#050505; border-top:1px solid rgba(201,168,76,0.2); padding:2rem; text-align:center; color:var(--text-muted); font-size:0.85rem; }
+        footer a { color:var(--gold-primary); }
+        .fab { position:fixed; bottom:2rem; right:2rem; width:55px; height:55px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem; z-index:999; box-shadow:0 4px 15px rgba(37,211,102,0.4); transition:var(--transition); }
+        .fab:hover { transform:scale(1.1); }
+        .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.6s ease,transform 0.6s ease; }
+        .reveal.active { opacity:1; transform:translateY(0); }
+        @media(max-width:900px) { .grid { grid-template-columns:repeat(2,1fr); } .features-strip .inner { grid-template-columns:repeat(2,1fr); } }
+        @media(max-width:600px) { .grid { grid-template-columns:1fr; } .features-strip .inner { grid-template-columns:1fr; } .nav-links { display:none; } .hamburger { display:block; } .nav-links.open { display:flex; flex-direction:column; position:fixed; top:60px; left:0; width:100%; background:#0a0a0a; padding:2rem; gap:1.5rem; border-bottom:1px solid rgba(201,168,76,0.2); } }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="index.html" class="nav-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><path d="M12 2v6"/><path d="M8 8v4"/><path d="M16 8v4"/><path d="M4 12h16"/><path d="M5 12l2 8h10l2-8"/></svg>Kegastic Royel</a>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a><a href="index.html#products">Products</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a>
+        <a href="https://wa.me/2348148683228?text=Hello%20Kegastic%20Royel!%20I%20would%20like%20a%20quote." target="_blank" class="btn-gold">Get a Quote</a>
+    </div>
+    <button class="hamburger" id="hamburger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18" stroke-linecap="round"/></svg></button>
+</nav>
+<div class="page-hero">
+    <div>
+        <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <span>Smart Lighting Systems</span></div>
+        <h1>Smart Lighting Systems</h1>
+        <p>Fully integrated lighting control networks for automated luxury living. Control every light in your home or office from your phone.</p>
+    </div>
+</div>
+<div class="features-strip">
+    <div class="inner">
+        <div class="feature-item reveal"><div class="icon">📱</div><h4>App Controlled</h4><p>Full control from your smartphone anywhere in the world</p></div>
+        <div class="feature-item reveal"><div class="icon">🎙️</div><h4>Voice Activated</h4><p>Compatible with Alexa, Google Home and Siri</p></div>
+        <div class="feature-item reveal"><div class="icon">⚡</div><h4>Energy Saving</h4><p>Up to 70% reduction in electricity consumption</p></div>
+        <div class="feature-item reveal"><div class="icon">🔄</div><h4>Auto Scheduling</h4><p>Set scenes and schedules that run automatically</p></div>
+    </div>
+</div>
+<div class="products-section">
+    <h2>Smart Lighting Solutions</h2>
+    <p class="subtitle">From simple dimmers to full whole-home automation systems, we have the right solution for you.</p>
+    <div class="grid">
+        <div class="card reveal">
+            <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Smart Dimmer" loading="lazy"></div>
+            <div class="card-body"><span class="card-tag">Entry Level</span><h3>Smart Dimmer Kit</h3><p>Replace your existing switches with smart dimmers. Control brightness and colour temperature from your phone instantly.</p><a href="https://wa.me/2348148683228?text=Hello!%20I%20am%20interested%20in%20the%20Smart%20Dimmer%20Kit." target="_blank" class="enquire-btn">Enquire Now →</a></div>
+        </div>
+        <div class="card reveal">
+            <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80" alt="Smart Bulbs" loading="lazy"></div>
+            <div class="card-body"><span class="card-tag">Retrofit</span><h3>Smart Colour Bulbs</h3><p>16 million colour RGB+W bulbs that fit any standard fitting. Transform your existing light fixtures into smart lighting instantly.</p><a href="https://wa.me/2348148683228?text=Hello!%20I%20am%20interested%20in%20Smart%20Colour%20Bulbs." target="_blank" class="enquire-btn">Enquire Now →</a></div>
+        </div>
+        <div class="card reveal">
+            <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=600&q=80" alt="Smart Panel" loading="lazy"></div>
+            <div class="card-body"><span class="card-tag">Control</span><h3>Central Hub System</h3><p>Whole-building lighting control hub with touchscreen panel. Manage zones, scenes and schedules from a single elegant interface.</p><a href="https://wa.me/2348148683228?text=Hello!%20I%20am%20interested%20in%20a%20Central%20Hub%20Smart%20Lighting%20System." target="_blank" class="enquire-btn">Enquire Now →</a></div>
+        </div>
+        <div class="card reveal">
+            <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Motion Sensor Lights" loading="lazy"></div>
+            <div class="card-body"><span class="card-tag">Automated</span><h3>Motion Sensor Suite</h3><p>Intelligent occupancy sensors that automatically turn lights on when you enter a room and off when you leave. Never waste energy again.</p><a href="https://wa.me/2348148683228?text=Hello!%20I%20am%20interested%20in%20the%20Motion%20Sensor%20Suite." target="_blank" class="enquire-btn">Enquire Now →</a></div>
+        </div>
+        <div class="card reveal">
+            <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=600&q=80" alt="LED Strip System" loading="lazy"></div>
+            <div class="card-body"><span class="card-tag">Accent</span><h3>Smart LED Strip</h3><p>Flexible RGB LED strips with app control for coves, cabinets and architectural details. Cut to any length and programme any colour.</p><a href="https://wa.me/2348148683228?text=Hello!%20I%20am%20interested%20in%20Smart%20LED%20Strip%20lighting." target="_blank" class="enquire-btn">Enquire Now →</a></div>
+        </div>
+        <div class="card reveal">
+            <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&q=80" alt="Full Home Automation" loading="lazy"></div>
+            <div class="card-body"><span class="card-tag">Premium</span><h3>Full Home Automation</h3><p>Complete smart lighting design, installation and integration with your existing home automation system. The ultimate luxury upgrade.</p><a href="https://wa.me/2348148683228?text=Hello!%20I%20am%20interested%20in%20a%20Full%20Home%20Smart%20Lighting%20Automation%20system." target="_blank" class="enquire-btn">Enquire Now →</a></div>
+        </div>
+    </div>
+</div>
+<div class="cta-section">
+    <h2>Ready to Go Smart?</h2>
+    <p>Our smart lighting experts will design and install the perfect system for your home or business.</p>
+    <a href="https://wa.me/2348148683228?text=Hello%20Kegastic%20Royel!%20I%20want%20to%20upgrade%20to%20smart%20lighting." target="_blank" class="cta-btn">Book a Smart Lighting Demo</a>
+</div>
+<footer><p>© 2025 <a href="index.html">Kegastic Royel Limited</a> — No 11 Efab Mall, Area 11 &nbsp;|&nbsp; +234 814 868 3228 &nbsp;|&nbsp; kosisochukwujoseph123@gmail.com</p></footer>
+<a href="https://wa.me/2348148683228" class="fab" target="_blank">💬</a>
+<script>
+    document.getElementById('hamburger').addEventListener('click',()=>{ document.getElementById('navLinks').classList.toggle('open'); });
+    const reveals=document.querySelectorAll('.reveal');
+    const observer=new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('active'); observer.unobserve(e.target); } }); },{threshold:0.1});
+    reveals.forEach(r=>observer.observe(r));
+</script>
+</body>
+</html>
